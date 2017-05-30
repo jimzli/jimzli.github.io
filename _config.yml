@@ -11,3 +11,4 @@ stackoverflow_username:
 stackoverflow_usernumber:
 # Build settings
 markdown: kramdown
+theme: jekyll-theme-cayman
