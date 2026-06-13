@@ -354,6 +354,16 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- footer ---------- */
 .footer { border-top: 1px solid var(--line); padding: 2.5rem var(--gutter); max-width: var(--maxw); margin: 0 auto; }
+.footer__verse {
+  font-family: var(--serif); font-style: italic; font-size: 0.98rem;
+  color: var(--ink-faint); max-width: 58ch; margin-bottom: 1.6rem;
+}
+.footer__ref {
+  font-style: normal; font-size: 0.68rem; color: var(--amber-dim);
+  letter-spacing: 0.06em; margin-left: 0.6rem; white-space: nowrap;
+  text-decoration: none; transition: color .2s;
+}
+.footer__ref:hover { color: var(--amber); text-decoration: underline; }
 .footer__rule {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem;
   font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint);
