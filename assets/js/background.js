@@ -1,7 +1,7 @@
 // Tron-inspired ambient background: a drifting blockchain node network with
-// neon traces and travelling order-flow pulses. Tuned to be light on the CPU:
-// glow is a pre-rendered sprite (no per-frame shadowBlur), links draw in one
-// batched path, and the loop is throttled and pauses when the tab is hidden.
+// neon traces and travelling order-flow pulses. Light on the CPU (pre-rendered
+// glow sprites, one batched line path, ~30fps), theme-aware, and paused when
+// the tab is hidden.
 (function () {
   "use strict";
 
@@ -9,17 +9,23 @@
   if (!canvas) return;
   var ctx = canvas.getContext("2d");
 
-  var AMBER = "232,176,75";
-  var GREEN = "67,211,158";
+  // Per-theme palette. Dark uses additive "lighter" glow; light uses normal
+  // compositing with deeper colours so the network reads on a pale background.
+  var PALETTES = {
+    dark:  { line: "232,176,75", comp: "lighter",     node: "232,176,75",
+             pulseA: "232,176,75", pulseB: "67,211,158", lineA: 0.07, coreA: 0.32 },
+    light: { line: "120,90,30",  comp: "source-over",  node: "120,90,30",
+             pulseA: "176,125,30", pulseB: "31,157,107", lineA: 0.1,  coreA: 0.3 }
+  };
 
+  var pal, glowNode, glowA, glowB;
   var w = 0, h = 0, dpr = 1;
   var nodes = [], pulses = [];
   var raf = null, last = 0;
-  var INTERVAL = 1000 / 30;     // ~30fps is plenty for slow drift
+  var INTERVAL = 1000 / 30;
   var LINK = 135, LINK2 = LINK * LINK;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Pre-rendered radial glow sprite (drawn once, stamped cheaply each frame)
   function makeGlow(rgb, size) {
     var c = document.createElement("canvas");
     c.width = c.height = size;
@@ -32,8 +38,14 @@
     g.fillRect(0, 0, size, size);
     return c;
   }
-  var glowAmber = makeGlow(AMBER, 20);
-  var glowGreen = makeGlow(GREEN, 18);
+
+  function applyTheme() {
+    var t = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    pal = PALETTES[t];
+    glowNode = makeGlow(pal.node, 20);
+    glowA = makeGlow(pal.pulseA, 18);
+    glowB = makeGlow(pal.pulseB, 18);
+  }
 
   function seed() {
     var count = Math.min(55, Math.round((w * h) / 28000));
@@ -70,7 +82,7 @@
 
     // links: one batched path, single stroke
     ctx.lineWidth = 1;
-    ctx.strokeStyle = "rgba(" + AMBER + ",0.07)";
+    ctx.strokeStyle = "rgba(" + pal.line + "," + pal.lineA + ")";
     ctx.beginPath();
     for (i = 0; i < nodes.length; i++) {
       var a = nodes[i];
@@ -81,17 +93,17 @@
         ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
         if (Math.random() < 0.0006 && pulses.length < 18) {
           pulses.push({ a: a, b: b, t: 0, sp: 0.004 + Math.random() * 0.009,
-                        g: Math.random() < 0.5 ? glowAmber : glowGreen });
+                        g: Math.random() < 0.5 ? glowA : glowB });
         }
       }
     }
     ctx.stroke();
 
-    // glow stamps (additive) for blocks + pulses, then crisp cores
-    ctx.globalCompositeOperation = "lighter";
+    // glow stamps for blocks + pulses
+    ctx.globalCompositeOperation = pal.comp;
     for (i = 0; i < nodes.length; i++) {
       n = nodes[i];
-      ctx.drawImage(glowAmber, n.x - 10, n.y - 10, 20, 20);
+      ctx.drawImage(glowNode, n.x - 10, n.y - 10, 20, 20);
     }
     for (var p = pulses.length - 1; p >= 0; p--) {
       var pl = pulses[p];
@@ -103,7 +115,8 @@
     }
     ctx.globalCompositeOperation = "source-over";
 
-    ctx.fillStyle = "rgba(" + AMBER + ",0.32)";
+    // crisp block cores
+    ctx.fillStyle = "rgba(" + pal.node + "," + pal.coreA + ")";
     for (i = 0; i < nodes.length; i++) {
       n = nodes[i];
       ctx.fillRect(n.x - n.s / 2, n.y - n.s / 2, n.s, n.s);
@@ -124,11 +137,16 @@
   window.addEventListener("resize", function () {
     clearTimeout(rt); rt = setTimeout(resize, 150);
   });
+  window.addEventListener("themechange", function () {
+    applyTheme();
+    if (reduce) frame();
+  });
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) stop(); else start();
   });
 
+  applyTheme();
   resize();
-  if (reduce) frame();   // single static frame, no animation
+  if (reduce) frame();
   else start();
 })();

@@ -2,6 +2,19 @@
 (function () {
   "use strict";
 
+  // Theme toggle (persisted; initial value set by the inline head script)
+  var themeBtn = document.querySelector(".topbar__theme");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      document.documentElement.dataset.theme = next;
+      var meta = document.querySelector("meta[name=theme-color]");
+      if (meta) meta.content = next === "light" ? "#f6f4ec" : "#0b0c0e";
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      window.dispatchEvent(new CustomEvent("themechange", { detail: next }));
+    });
+  }
+
   // Reassemble email links at runtime so the address is never in static HTML
   document.querySelectorAll(".js-mail").forEach(function (a) {
     var u = a.getAttribute("data-u");
@@ -49,12 +62,20 @@
     io.observe(el);
   });
 
-  // Sticky topbar border once scrolled past hero top
+  // Sticky topbar border + scroll-to-top button visibility
   var topbar = document.querySelector(".topbar");
+  var toTop = document.querySelector(".to-top");
   function onScroll() {
-    if (!topbar) return;
-    topbar.classList.toggle("is-stuck", window.scrollY > 24);
+    var y = window.scrollY;
+    if (topbar) topbar.classList.toggle("is-stuck", y > 24);
+    if (toTop) toTop.classList.toggle("is-visible", y > window.innerHeight * 0.6);
   }
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+
+  if (toTop) {
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 })();
