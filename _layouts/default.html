@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title }} — {{ site.tagline }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta name="author" content="{{ site.author }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ site.title }} — {{ site.tagline }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body id="top">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a href="#top" class="topbar__mark">JL<span class="blink">_</span></a>
+    <nav class="topbar__nav">
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#stack">stack</a>
+      <a href="#education">education</a>
+      <a href="mailto:{{ site.data.resume.email }}" class="topbar__cta">contact</a>
+    </nav>
+  </header>
+
+  {{ content }}
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__name">{{ site.data.resume.name }}</div>
+        <div class="footer__meta">{{ site.data.resume.role }} · {{ site.data.resume.location }}</div>
+      </div>
+      <a class="footer__email" href="mailto:{{ site.data.resume.email }}">{{ site.data.resume.email }}</a>
+    </div>
+    <div class="footer__rule">
+      <span>© {{ site.time | date: '%Y' }} {{ site.data.resume.name }}</span>
+      <span class="footer__sig">built with Jekyll · updated {{ site.time | date: '%b %Y' }}</span>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</body>
+</html>

@@ -1,19 +1,166 @@
 ---
 layout: default
 ---
+{% assign r = site.data.resume %}
 
-<div class="home">
-  <h1 class="page-heading">Posts</h1>
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <div class="hero__status">
+      <span class="dot"></span>
+      <span class="mono">OPEN · {{ r.location }}</span>
+    </div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
+    <h1 class="hero__name">
+      <span class="reveal" style="--d:0">Jim</span>
+      <span class="reveal" style="--d:1">Li</span>
+    </h1>
+
+    <p class="hero__role reveal" style="--d:2">
+      <span class="hero__role-main">{{ r.role }}</span>
+      <span class="hero__role-sub mono">{{ r.focus }}</span>
+    </p>
+
+    <p class="hero__blurb reveal" style="--d:3">{{ r.summary[0] }}</p>
+
+    <div class="hero__actions reveal" style="--d:4">
+      <a class="btn btn--primary" href="#experience">View track record</a>
+      <a class="btn btn--ghost" href="mailto:{{ r.email }}">{{ r.email }}</a>
+    </div>
+
+    <dl class="hero__facts reveal" style="--d:5">
+      <div><dt class="mono">CITIZENSHIP</dt><dd>{{ r.citizenship }}</dd></div>
+      <div><dt class="mono">DISCIPLINE</dt><dd>Pricing · Matching · Brokerage</dd></div>
+      <div><dt class="mono">DOMAINS</dt><dd>Crypto · FX · Commodities · Fixed Income</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" role="img" aria-label="Career history feed">
+  <div class="ticker__track">
+    {% for n in (1..2) %}
+      {% for t in r.ticker %}
+        <span class="tick tick--{{ t.dir }}">
+          <span class="tick__sym mono">{{ t.sym }}</span>
+          <span class="tick__arrow">{% if t.dir == 'up' %}▲{% else %}▼{% endif %}</span>
+          <span class="tick__label">{{ t.label }}</span>
+        </span>
+      {% endfor %}
     {% endfor %}
-  </ul>
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  </div>
 </div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="section">
+  <div class="section__head">
+    <span class="section__idx mono">01</span>
+    <h2 class="section__title">Profile</h2>
+  </div>
+  <div class="about">
+    {% for p in r.summary %}<p class="about__para">{{ p }}</p>{% endfor %}
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" class="section">
+  <div class="section__head">
+    <span class="section__idx mono">02</span>
+    <h2 class="section__title">Track Record</h2>
+  </div>
+
+  <ol class="blotter">
+    {% for job in r.experience %}
+    <li class="row{% if job.current %} row--live{% endif %} reveal-up">
+      <div class="row__period mono">
+        {{ job.period }}
+        {% if job.current %}<span class="row__live">● LIVE</span>{% endif %}
+      </div>
+      <div class="row__body">
+        <h3 class="row__company">
+          {{ job.company }}
+          {% if job.entity != "" %}<span class="row__entity mono">{{ job.entity }}</span>{% endif %}
+          <span class="row__loc mono">{{ job.location }}</span>
+        </h3>
+        <div class="row__role">{{ job.role }}</div>
+        <p class="row__detail">{{ job.detail }}</p>
+
+        {% if job.clients %}
+        <ul class="clients">
+          {% for c in job.clients %}
+          <li class="client">
+            <div class="client__head">
+              <span class="client__name">{{ c.name }}</span>
+              <span class="client__period mono">{{ c.period }}</span>
+            </div>
+            <p class="client__detail">{{ c.detail }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<!-- ============ STACK ============ -->
+<section id="stack" class="section">
+  <div class="section__head">
+    <span class="section__idx mono">03</span>
+    <h2 class="section__title">Stack</h2>
+  </div>
+  <div class="stack">
+    {% for s in r.skills %}
+    <div class="stack__group reveal-up">
+      <h3 class="stack__label mono">{{ s.group }}</h3>
+      <ul class="chips">
+        {% for item in s.items %}<li class="chip">{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education" class="section">
+  <div class="section__head">
+    <span class="section__idx mono">04</span>
+    <h2 class="section__title">Education</h2>
+  </div>
+  <div class="edu">
+    {% for e in r.education %}
+    <div class="edu__item reveal-up">
+      <div class="edu__period mono">{{ e.period }}</div>
+      <div class="edu__body">
+        <h3 class="edu__school">{{ e.school }}</h3>
+        <div class="edu__award">{{ e.award }}</div>
+        {% if e.note != "" %}<p class="edu__note">{{ e.note }}</p>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="twocol">
+    <div class="panel reveal-up">
+      <h3 class="panel__label mono">Selected Courses</h3>
+      <ul class="list">
+        {% for c in r.courses %}<li>{{ c }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="panel reveal-up">
+      <h3 class="panel__label mono">Beyond the Desk</h3>
+      <ul class="list">
+        {% for o in r.other %}<li>{{ o }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section contact">
+  <p class="contact__kicker mono">// let's build something fast</p>
+  <a class="contact__email" href="mailto:{{ r.email }}">{{ r.email }}</a>
+  <p class="contact__loc mono">{{ r.location }} · {{ r.citizenship }}</p>
+</section>

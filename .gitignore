@@ -1,0 +1,15 @@
+# Jekyll (standard)
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler / gem dependencies
+vendor/
+.bundle/
+
+# macOS
+.DS_Store
+
+# Editor / tooling
+.omc/
