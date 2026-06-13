@@ -8,7 +8,7 @@ layout: default
   <div class="hero__inner">
     <div class="hero__status">
       <span class="dot"></span>
-      <span class="mono">OPEN · {{ r.location }}</span>
+      <span class="mono">HELLO · {{ r.location }}</span>
     </div>
 
     <h1 class="hero__name">
@@ -25,11 +25,11 @@ layout: default
 
     <div class="hero__actions reveal" style="--d:4">
       <a class="btn btn--primary" href="#experience">View track record</a>
-      {% include email.html email=r.email class="btn btn--ghost" %}
+      {% include email.html email=r.email class="btn btn--ghost" label="Contact" %}
     </div>
 
     <dl class="hero__facts reveal" style="--d:5">
-      <div><dt class="mono">CITIZENSHIP</dt><dd>{{ r.citizenship }}</dd></div>
+      <div><dt class="mono">BASED</dt><dd>{{ r.location }}</dd></div>
       <div><dt class="mono">DISCIPLINE</dt><dd>Pricing · Matching · Brokerage</dd></div>
       <div><dt class="mono">DOMAINS</dt><dd>Crypto · FX · Commodities · Fixed Income</dd></div>
     </dl>
@@ -75,7 +75,7 @@ layout: default
       </div>
       <div class="row__body">
         <h3 class="row__company">
-          {{ job.company }}
+          {% include extlink.html url=job.url text=job.company class="row__link" %}
           {% if job.entity != "" %}<span class="row__entity mono">{{ job.entity }}</span>{% endif %}
           <span class="row__loc mono">{{ job.location }}</span>
         </h3>
@@ -88,7 +88,7 @@ layout: default
           <li class="client">
             <div class="client__head">
               <span class="client__name">{{ c.name }}</span>
-              <span class="client__period mono">{{ c.period }}</span>
+              {% if c.period %}<span class="client__period mono">{{ c.period }}</span>{% endif %}
             </div>
             <p class="client__detail">{{ c.detail }}</p>
           </li>
@@ -128,7 +128,7 @@ layout: default
     <div class="edu__item reveal-up">
       <div class="edu__period mono">{{ e.period }}</div>
       <div class="edu__body">
-        <h3 class="edu__school">{{ e.school }}</h3>
+        <h3 class="edu__school">{% include extlink.html url=e.url text=e.school class="row__link" %}</h3>
         <div class="edu__award">{{ e.award }}</div>
         {% if e.note != "" %}<p class="edu__note">{{ e.note }}</p>{% endif %}
       </div>
@@ -146,14 +146,14 @@ layout: default
     <div class="panel reveal-up">
       <h3 class="panel__label mono">Beyond the Desk</h3>
       <ul class="list">
-        {% for o in r.other %}<li>{{ o }}</li>{% endfor %}
+        {% for o in r.other %}<li>{% include extlink.html url=o.url text=o.text class="list__link" %}</li>{% endfor %}
       </ul>
     </div>
   </div>
 </section>
 
 <section id="contact" class="section contact">
-  <p class="contact__kicker mono">// let's build something fast</p>
+  <p class="contact__kicker mono">// let's build something awesome<span class="blink">_</span></p>
   {% include email.html email=r.email class="contact__email" %}
-  <p class="contact__loc mono">{{ r.location }} · {{ r.citizenship }}</p>
+  <p class="contact__loc mono">{{ r.location }} · Remote</p>
 </section>

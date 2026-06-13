@@ -1,0 +1,2 @@
+{%- comment -%} External link with double-click confirm (see assets/js/main.js). Params: url, text, class. {%- endcomment -%}
+{%- if include.url -%}<a class="{{ include.class }}" href="{{ include.url }}" target="_blank" rel="noopener">{{ include.text }}</a>{%- else -%}{{ include.text }}{%- endif -%}

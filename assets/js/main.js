@@ -1,4 +1,4 @@
-// Jim Li — interactions: scroll reveal + sticky topbar + email assembly
+// Jim Li interactions: scroll reveal + sticky topbar + email assembly
 (function () {
   "use strict";
 
@@ -10,6 +10,29 @@
     var addr = u + "@" + d;
     a.setAttribute("href", "mailto:" + addr);
     if (!a.hasAttribute("data-label")) a.textContent = addr;
+  });
+
+  // External links require a deliberate double-click (single click arms a hint)
+  document.querySelectorAll(".row__link, .list__link").forEach(function (a) {
+    a.setAttribute("title", "Double-click to open");
+    var timer;
+    function open() { window.open(a.href, "_blank", "noopener"); }
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      a.classList.add("is-armed");
+      clearTimeout(timer);
+      timer = setTimeout(function () { a.classList.remove("is-armed"); }, 1400);
+    });
+    a.addEventListener("dblclick", function (e) {
+      e.preventDefault();
+      clearTimeout(timer);
+      a.classList.remove("is-armed");
+      open();
+    });
+    // Keep keyboard access: Enter opens directly
+    a.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); open(); }
+    });
   });
 
   // Reveal-on-scroll

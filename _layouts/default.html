@@ -6,11 +6,12 @@ layout: compress
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ site.title }} — {{ site.tagline }}</title>
+  <title>{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
   <meta name="author" content="{{ site.author }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 
-  <meta property="og:title" content="{{ site.title }} — {{ site.tagline }}">
+  <meta property="og:title" content="{{ site.title }} · {{ site.tagline }}">
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}">
@@ -38,16 +39,9 @@ layout: compress
   {{ content }}
 
   <footer class="footer">
-    <div class="footer__inner">
-      <div>
-        <div class="footer__name">{{ site.data.resume.name }}</div>
-        <div class="footer__meta">{{ site.data.resume.role }} · {{ site.data.resume.location }}</div>
-      </div>
-      {% include email.html email=site.data.resume.email class="footer__email" %}
-    </div>
     <div class="footer__rule">
       <span>© {{ site.time | date: '%Y' }} {{ site.data.resume.name }}</span>
-      <span class="footer__sig">built with Jekyll · updated {{ site.time | date: '%b %Y' }}</span>
+      <span class="footer__sig">All rights reserved</span>
     </div>
   </footer>
 

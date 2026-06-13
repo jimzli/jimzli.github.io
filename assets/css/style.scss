@@ -1,10 +1,7 @@
 ---
 # Processed by Jekyll's Sass converter; output is minified (sass.style: compressed)
 ---
-/* =========================================================
-   Jim Li — quantitative trading-terminal aesthetic
-   Fraunces (display) · IBM Plex Sans (body) · IBM Plex Mono (data)
-   ========================================================= */
+/* Jim Li. Type: Fraunces (display), IBM Plex Sans (body), IBM Plex Mono (data) */
 
 :root {
   --bg:        #0b0c0e;
@@ -143,7 +140,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.03em;
   display: flex; flex-wrap: wrap; gap: 0 0.3em;
 }
-.hero__name span:last-child { font-style: italic; color: var(--amber); }
+.hero__name span:last-child { color: var(--amber); }
 
 .hero__role {
   margin-top: 1.6rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem;
@@ -241,6 +238,16 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--serif); font-weight: 500; font-size: 1.7rem;
   letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.7rem;
 }
+.row__link {
+  color: inherit; text-decoration: none;
+  background-image: linear-gradient(var(--amber), var(--amber));
+  background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat;
+  transition: background-size .3s ease, color .3s ease;
+}
+.row__link:hover { color: var(--amber); background-size: 100% 1px; }
+.row__link::after { content: "↗"; font-family: var(--mono); font-size: 0.5em; vertical-align: super; margin-left: 0.15em; color: var(--amber); opacity: 0.55; }
+.row__link.is-armed { color: var(--amber); background-size: 100% 1px; cursor: pointer; }
+.row__link.is-armed::after { content: "↗ double-click to open"; font-size: 0.42em; vertical-align: middle; opacity: 0.9; letter-spacing: 0.04em; }
 .row__entity, .row__loc { font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.04em; }
 .row__loc::before { content: "↳ "; }
 .row__role { margin-top: 0.5rem; color: var(--amber); font-size: 0.95rem; font-weight: 400; }
@@ -311,6 +318,16 @@ a { color: inherit; text-decoration: none; }
   position: relative; padding-left: 1.3rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5;
 }
 .list li::before { content: "▪"; position: absolute; left: 0; color: var(--amber-dim); font-size: 0.7rem; top: 0.25rem; }
+.list__link {
+  color: inherit; text-decoration: none;
+  background-image: linear-gradient(var(--amber), var(--amber));
+  background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat;
+  transition: background-size .3s ease, color .25s ease;
+}
+.list__link:hover { color: var(--ink); background-size: 100% 1px; }
+.list__link::after { content: "↗"; font-family: var(--mono); font-size: 0.62em; vertical-align: super; margin-left: 0.2em; color: var(--amber); opacity: 0.5; }
+.list__link.is-armed { color: var(--ink); background-size: 100% 1px; cursor: pointer; }
+.list__link.is-armed::after { content: "↗ double-click to open"; font-size: 0.78em; vertical-align: middle; opacity: 0.9; letter-spacing: 0.04em; color: var(--amber); }
 
 /* ---------- contact ---------- */
 .contact { text-align: center; padding-top: clamp(4rem, 12vw, 8rem); }
@@ -327,14 +344,8 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- footer ---------- */
 .footer { border-top: 1px solid var(--line); padding: 2.5rem var(--gutter); max-width: var(--maxw); margin: 0 auto; }
-.footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem; }
-.footer__name { font-family: var(--serif); font-size: 1.4rem; }
-.footer__meta { color: var(--ink-faint); font-size: 0.85rem; margin-top: 0.2rem; }
-.footer__email { font-family: var(--mono); font-size: 0.85rem; color: var(--amber); }
-.footer__email:hover { text-decoration: underline; }
 .footer__rule {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem;
-  margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid var(--line-soft);
   font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint);
 }
 

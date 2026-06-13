@@ -2,20 +2,20 @@ name: Jim Li
 role: Engineering Director
 focus: High-Performance Trading Systems
 location: Singapore
-citizenship: British Citizen · Singapore PR
 email: contact@jimli.net
 
 summary:
   - >-
-    Currently leading the Grid Bots development team at a major cryptocurrency
-    exchange. Proven experience in the design and greenfield buildout of
-    high-performance trading systems — pricing, matching, and brokerage.
+    Currently leading a trading bots development team at a major cryptocurrency
+    exchange, delivering some of the most widely used and profitable bots in the
+    market. Proven experience in the design and greenfield buildout of
+    high-performance trading systems: pricing, matching, and brokerage.
   - >-
     Academic background in Computing, Risk Management and Financial Engineering
     from Imperial College London. Prior roles across buy- and sell-side firms in
     Commodities, FX, and Fixed Income.
 
-# Career ticker — rendered as a scrolling market feed
+# Career ticker: rendered as a scrolling market feed
 ticker:
   - { sym: OKX,   label: Engineering Director, dir: up }
   - { sym: BMEX,  label: Senior Software Dev,  dir: up }
@@ -25,131 +25,154 @@ ticker:
   - { sym: DB,    label: E-Trading Associate,  dir: up }
   - { sym: ICL,   label: MSc · MEng,           dir: up }
 
-# Experience — order-blotter timeline
+# Experience: order-blotter timeline
 experience:
   - company: OKX
-    entity: OKBL Pte. Ltd.
+    url: https://www.okx.com/
+    entity: ""
     location: Singapore
-    period: Jan 2023 — Present
-    role: Engineering Director — Grid, Trading Services
+    period: Present
+    role: Engineering Director · Trading Services
     current: true
     detail: >-
-      Technical Lead for Grid Bots with a team of 4. Previously Singapore lead
-      for OKX Institutional backend — responsible for launching Nitro Spreads
-      and developing RFQ and Block Trading services with a team of 3.
+      Technical Lead for <a class="row__link" href="https://www.okx.com/en-sg/trading-bot"
+      target="_blank" rel="noopener">Trading Bots</a>, building some of the most
+      advanced and profitable automated strategies in the market for both retail
+      and VIP users.
+      Earlier, as Singapore lead for the <a class="row__link"
+      href="https://www.okx.com/en-sg/institutional" target="_blank"
+      rel="noopener">OKX Institutional</a> backend, launched Nitro Spreads and
+      stood up the RFQ and Block Trading services from the ground up.
 
   - company: BitMEX
-    entity: Three Fins Pte. Ltd.
+    url: https://www.bitmex.com/
+    entity: ""
     location: Singapore
-    period: Sep 2021 — Jan 2023
-    role: Senior Software Developer — Engine Team, Trading Technology
+    period: 2023
+    role: Senior Software Developer · Engine Team, Trading Technology
     detail: >-
-      Design and development of the core Java engines including the orderbook
-      and broker — backing the exchange's margin trading, brokerage, and
-      structured products. TDD and BDD practices.
+      Architected and built the core Java engines, the orderbook and broker at
+      the heart of the exchange, powering margin trading, brokerage, and
+      structured products. Engineered for correctness and throughput under
+      rigorous TDD and BDD.
 
   - company: J.P. Morgan Chase
+    url: https://www.jpmorganchase.com/
     entity: ""
     location: Singapore
-    period: Dec 2019 — Sep 2021
-    role: Vice President — Commodities e-Commerce Technology
+    period: 2021
+    role: Vice President · Commodities e-Commerce Technology
     detail: >-
-      Regional development lead. Primarily responsible for position-management
-      & controls, PnL, and Java-based components. Drove migration and
-      modernisation of the Python-based trading stack.
+      Regional development lead for commodities e-commerce. Owned position
+      management, controls, PnL, and the core Java services, while driving the
+      migration and modernisation of a legacy Python trading stack.
 
   - company: Typesoftly Solutions
-    entity: United Kingdom
+    entity: London
     location: U.K.
-    period: Apr 2015 — Sep 2018
+    period: 2018
     role: Principal Consultant
     detail: >-
-      Architecture and implementation consultancy for proprietary algorithmic
-      brokerage and dealing.
+      Independent architecture and engineering consultancy for proprietary
+      algorithmic brokerage and dealing across leading institutions.
     clients:
       - name: Stater Global Markets
-        period: 2016 — 2018
         detail: >-
-          With the CEO, delivered a DMA prototype for EFX position and PnL risk
-          management. Proposed an institutional back-office system for trade
-          reconciliation and accounts management.
+          Partnered with the CEO to deliver a direct-market-access prototype for
+          EFX position and PnL risk, and designed an institutional back-office for
+          trade reconciliation and accounts management.
       - name: Voltaire Capital (U.K.)
-        period: 2017 — 2018
         detail: >-
-          With the CTO and senior developers, introduced a global risk-distribution
-          platform for the firm's automated market-making engines. Re-architected
-          the liquidity distribution engines to increase throughput and reduce
-          latencies using BDD.
+          Worked with the CTO to launch a global risk-distribution platform for
+          the firm's automated market-making engines, re-architecting the
+          liquidity layer to lift throughput and cut latency through disciplined
+          BDD.
       - name: Credit Suisse Group
-        period: 2015 — 2016
         detail: >-
-          Delivered NDF pricing and execution to the internalisation Global Limit
-          Orders platform. Introduced an integration test harness and substantial
-          refactoring to improve robustness and support entitlements.
+          Delivered NDF pricing and execution into the internalisation Global
+          Limit Orders platform, hardening the system with a new integration test
+          harness, entitlements support, and substantial refactoring.
 
   - company: Citigroup
+    url: https://www.citigroup.com/
     entity: ""
     location: U.K.
-    period: Sep 2014 — Jun 2015
-    role: Associate Vice President — FXLM AutoTrader
+    period: 2015
+    role: Associate Vice President · FXLM AutoTrader
     detail: >-
-      Principal developer on the global co-located EFX pricing, deal acceptance,
-      and position management engines. Analysed quoting latencies and delivered
-      NDF spot-equivalent dealing. Key technical liaison in the KPMG audit and
-      re-architecture of AutoTrader.
+      Principal developer on the globally co-located EFX pricing, deal-acceptance,
+      and position-management engines. Profiled and tuned quoting latency,
+      delivered NDF spot-equivalent dealing, and served as key technical liaison
+      through the KPMG audit and AutoTrader re-architecture.
 
   - company: Deutsche Bank
+    url: https://www.db.com/
     entity: ""
     location: U.K.
-    period: Sep 2011 — Sep 2014
-    role: Associate — E-Trading Application Services
+    period: 2014
+    role: Associate · E-Trading Application Services
     detail: >-
-      Roles across Market E-Trading Algo, High Frequency Trading, and Performance.
-      Quantitative developer on front-office desks (Credit, Swaps, Euro Govies)
-      building models and the underlying market-making and micro-hedging engine.
-      Won the graduate CIO Challenge (2012) and Buy-Local-Bonds competitions (2011).
+      Spanned Market E-Trading Algo, High-Frequency Trading, and Performance.
+      Quantitative developer on front-office desks (Credit, Swaps, Euro Govies),
+      building pricing models and the market-making and micro-hedging engine
+      beneath them. Winner of the graduate CIO Challenge and Buy-Local-Bonds
+      competitions.
 
 education:
   - school: Imperial College London Business School
-    period: 2018 — 2019
+    url: https://www.imperial.ac.uk/business-school/
+    period: 2019
     award: MSc, Risk Management and Financial Engineering
     note: >-
-      Thesis — Correlation time variance of Foreign Exchange portfolios and links
+      Thesis: Correlation time variance of Foreign Exchange portfolios and links
       to macroeconomic shocks. Won Best Research Project.
   - school: Imperial College London
-    period: 2007 — 2011
-    award: MEng, ACGI — Computing (Upper Second)
+    url: https://www.imperial.ac.uk/
+    period: 2011
+    award: MEng, ACGI · Computing
     note: >-
-      Thesis — A Logical Agent-Based Environment Monitoring and Control System.
+      Thesis: A Logical Agent-Based Environment Monitoring and Control System.
       Computing Society Gaming Events Officer; ICU Fairtrade Society Web Officer.
   - school: Sir Henry Floyd Grammar School
-    period: 2002 — 2007
-    award: A-levels — Maths, Further Maths, Physics, Chemistry, Biology (AS)
+    period: 2007
+    award: "A-levels: Maths, Further Maths, Physics, Chemistry, Biology"
     note: ""
 
 skills:
   - group: Languages
     items: [Java, Python, R, "JS / HTML / JSON", "C#", VBA, Prolog, "KDB+/q"]
+  - group: Markets & Domain
+    items: ["Market Making", "Algorithmic Trading", "DMA", "RFQ & Block Trading", "Order Matching", "Risk & PnL", "Low-Latency Pricing"]
   - group: Platform & Infra
-    items: [Docker, Jenkins, TeamCity, "CI/CD", AWS, "Alibaba Cloud", GitLab, Jira]
+    items: [Docker, Jenkins, TeamCity, AWS, "Alibaba Cloud", GitLab, Jira]
   - group: Low-Latency
     items: [Aeron, Chronicle, SBE, ProtoBuf, Thrift, "FIX 4+"]
   - group: JVM Toolchain
     items: [Spring, Maven, Gradle, JUnit, Mockito, AspectJ, Testcontainers]
+  - group: Engineering Practices
+    items: [TDD, BDD, "CI/CD", "UTs / ITs", DDD, Scrum]
   - group: Domain Tools
     items: [Bloomberg, "Reuters DataStream", NetLogo, "LaTeX", Unix]
+  - group: AI / Agentic
+    items: [Antigravity, "Claude Code", Gemini]
 
 courses:
-  - "Bloomberg Market Concepts — Bloomberg for Education (2019)"
-  - "C++ For Finance — Imperial College London Business School (2019)"
-  - "Introduction to Data Science (Honors) — WorldQuant University (2018)"
-  - "Pattern-Oriented Software Architectures — Vanderbilt University (2013)"
-  - "Functional Programming Principles in Scala — EPFL (2013)"
-  - "Introduction to Psychology — University of Toronto (2014)"
+  - "Bloomberg Market Concepts · Bloomberg for Education"
+  - "C++ For Finance · Imperial College London Business School"
+  - "Introduction to Data Science (Honors) · WorldQuant University"
+  - "Pattern-Oriented Software Architectures · Vanderbilt University"
+  - "Functional Programming Principles in Scala · EPFL"
+  - "Introduction to Psychology · University of Toronto"
 
 other:
-  - "GUE Fundamentals Tec. (2025) · PADI Divemaster (since 2024)"
-  - "WBS co-leader, Grace Baptist Church, Singapore (since 2020)"
-  - "Workers Ministry Trainee, St Helen's Bishopsgate, U.K. (2018–19)"
-  - "Springboard co-leader, All Souls Langham Place, U.K. (2016–18)"
-  - "Published in Expert Systems, conference proceedings (2008–15)"
+  - text: "PADI Open Water Scuba Instructor"
+    url: https://www.padi.com/
+  - text: "GUE Fundamentals Tec."
+    url: https://www.gue.com/
+  - text: "WBS co-leader, Grace Baptist Church, Singapore"
+    url: https://www.english.gracebaptistchurch.sg/
+  - text: "Workers Ministry Trainee, St Helen's Bishopsgate, U.K."
+    url: https://www.st-helens.org.uk/
+  - text: "Springboard co-leader, All Souls Langham Place, U.K."
+    url: https://www.allsouls.org/
+  - text: "Published in Expert Systems, conference proceedings"

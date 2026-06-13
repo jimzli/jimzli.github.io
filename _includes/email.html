@@ -1,14 +1,4 @@
-{%- comment -%}
-  Bot-resistant email link. The address is never emitted as a contiguous
-  string or as a mailto: href in the static HTML — only split across data-u
-  / data-d attributes. assets/js/main.js reassembles the real link at runtime.
-
-  Params:
-    include.email  required — full address (e.g. user@example.com)
-    include.class  optional — extra CSS classes
-    include.label  optional — fixed visible text; if omitted, JS shows the
-                              address and the no-JS fallback shows "user [at] domain"
-{%- endcomment -%}
+{%- comment -%} Bot-resistant email link: address split across data attributes and reassembled by main.js. Params: email (required), class, label (optional). {%- endcomment -%}
 {%- assign _parts = include.email | split: "@" -%}
 {%- assign _u = _parts[0] -%}
 {%- assign _d = _parts[1] -%}
