@@ -230,10 +230,7 @@ a { color: inherit; text-decoration: none; }
 .row:hover { background: linear-gradient(90deg, rgba(232,176,75,0.04), transparent 70%); }
 
 .row__period { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.3rem; }
-.row__live {
-  display: inline-block; margin-top: 0.5rem; font-size: 0.68rem;
-  color: var(--bull); letter-spacing: 0.1em;
-}
+.row__present { color: var(--bull); letter-spacing: 0.04em; }
 .row__company {
   font-family: var(--serif); font-weight: 500; font-size: 1.7rem;
   letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.7rem;
@@ -250,8 +247,23 @@ a { color: inherit; text-decoration: none; }
 .row__link.is-armed::after { content: "↗ double-click to open"; font-size: 0.42em; vertical-align: middle; opacity: 0.9; letter-spacing: 0.04em; }
 .row__entity, .row__loc { font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.04em; }
 .row__loc::before { content: "↳ "; }
-.row__role { margin-top: 0.5rem; color: var(--amber); font-size: 0.95rem; font-weight: 400; }
+.row__role {
+  margin-top: 0.5rem; color: var(--amber); font-size: 0.95rem; font-weight: 400;
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem;
+  width: fit-content; transition: color .2s;
+}
+.row__role::-webkit-details-marker { display: none; }
+.row__role::after {
+  content: "// more info"; font-family: var(--mono); font-size: 0.8rem; line-height: 1;
+  color: var(--ink-faint); letter-spacing: 0.04em; position: relative; top: 0.06em;
+  transition: color .2s;
+}
+.row__role:hover { color: var(--amber-dim); }
+.row__role:hover::after { color: var(--amber); }
+.row__disclosure[open] .row__role::after { content: "// less info"; }
 .row__detail { margin-top: 0.85rem; color: var(--ink-soft); max-width: 62ch; }
+.row__disclosure[open] > .row__detail { animation: fade .35s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(-4px); } }
 
 .clients { list-style: none; margin-top: 1.4rem; display: grid; gap: 0.9rem; }
 .client {

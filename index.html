@@ -70,8 +70,7 @@ layout: default
     {% for job in r.experience %}
     <li class="row{% if job.current %} row--live{% endif %} reveal-up">
       <div class="row__period mono">
-        {{ job.period }}
-        {% if job.current %}<span class="row__live">● LIVE</span>{% endif %}
+        {% if job.current %}<span class="row__present">● {{ job.period }}</span>{% else %}{{ job.period }}{% endif %}
       </div>
       <div class="row__body">
         <h3 class="row__company">
@@ -79,22 +78,24 @@ layout: default
           {% if job.entity != "" %}<span class="row__entity mono">{{ job.entity }}</span>{% endif %}
           <span class="row__loc mono">{{ job.location }}</span>
         </h3>
-        <div class="row__role">{{ job.role }}</div>
-        <p class="row__detail">{{ job.detail }}</p>
+        <details class="row__disclosure"{% if job.current %} open{% endif %}>
+          <summary class="row__role">{{ job.role }}</summary>
+          <p class="row__detail">{{ job.detail }}</p>
 
-        {% if job.clients %}
-        <ul class="clients">
-          {% for c in job.clients %}
-          <li class="client">
-            <div class="client__head">
-              <span class="client__name">{{ c.name }}</span>
-              {% if c.period %}<span class="client__period mono">{{ c.period }}</span>{% endif %}
-            </div>
-            <p class="client__detail">{{ c.detail }}</p>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
+          {% if job.clients %}
+          <ul class="clients">
+            {% for c in job.clients %}
+            <li class="client">
+              <div class="client__head">
+                <span class="client__name">{{ c.name }}</span>
+                {% if c.period %}<span class="client__period mono">{{ c.period }}</span>{% endif %}
+              </div>
+              <p class="client__detail">{{ c.detail }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </details>
       </div>
     </li>
     {% endfor %}
