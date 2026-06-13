@@ -1,3 +1,6 @@
+---
+layout: compress
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,6 @@
   <meta name="description" content="{{ site.description }}">
   <meta name="author" content="{{ site.author }}">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="{{ site.title }} — {{ site.tagline }}">
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:type" content="website">
@@ -29,7 +31,7 @@
       <a href="#experience">experience</a>
       <a href="#stack">stack</a>
       <a href="#education">education</a>
-      <a href="mailto:{{ site.data.resume.email }}" class="topbar__cta">contact</a>
+      {% include email.html email=site.data.resume.email class="topbar__cta" label="contact" %}
     </nav>
   </header>
 
@@ -41,7 +43,7 @@
         <div class="footer__name">{{ site.data.resume.name }}</div>
         <div class="footer__meta">{{ site.data.resume.role }} · {{ site.data.resume.location }}</div>
       </div>
-      <a class="footer__email" href="mailto:{{ site.data.resume.email }}">{{ site.data.resume.email }}</a>
+      {% include email.html email=site.data.resume.email class="footer__email" %}
     </div>
     <div class="footer__rule">
       <span>© {{ site.time | date: '%Y' }} {{ site.data.resume.name }}</span>

@@ -1,6 +1,16 @@
-// Jim Li — interactions: scroll reveal + sticky topbar
+// Jim Li — interactions: scroll reveal + sticky topbar + email assembly
 (function () {
   "use strict";
+
+  // Reassemble email links at runtime so the address is never in static HTML
+  document.querySelectorAll(".js-mail").forEach(function (a) {
+    var u = a.getAttribute("data-u");
+    var d = a.getAttribute("data-d");
+    if (!u || !d) return;
+    var addr = u + "@" + d;
+    a.setAttribute("href", "mailto:" + addr);
+    if (!a.hasAttribute("data-label")) a.textContent = addr;
+  });
 
   // Reveal-on-scroll
   var io = new IntersectionObserver(function (entries) {

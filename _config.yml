@@ -14,3 +14,15 @@ exclude:
   - Gemfile.lock
   - README.md
   - .omc
+
+# Minify CSS via the built-in Sass converter
+sass:
+  style: compressed
+
+# Minify HTML (via _layouts/compress.html)
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  blanklines: false
+  profile: false

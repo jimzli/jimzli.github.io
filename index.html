@@ -3,7 +3,6 @@ layout: default
 ---
 {% assign r = site.data.resume %}
 
-<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="hero__inner">
@@ -26,7 +25,7 @@ layout: default
 
     <div class="hero__actions reveal" style="--d:4">
       <a class="btn btn--primary" href="#experience">View track record</a>
-      <a class="btn btn--ghost" href="mailto:{{ r.email }}">{{ r.email }}</a>
+      {% include email.html email=r.email class="btn btn--ghost" %}
     </div>
 
     <dl class="hero__facts reveal" style="--d:5">
@@ -37,7 +36,6 @@ layout: default
   </div>
 </section>
 
-<!-- ============ TICKER ============ -->
 <div class="ticker" role="img" aria-label="Career history feed">
   <div class="ticker__track">
     {% for n in (1..2) %}
@@ -52,7 +50,6 @@ layout: default
   </div>
 </div>
 
-<!-- ============ ABOUT ============ -->
 <section id="about" class="section">
   <div class="section__head">
     <span class="section__idx mono">01</span>
@@ -63,7 +60,6 @@ layout: default
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
 <section id="experience" class="section">
   <div class="section__head">
     <span class="section__idx mono">02</span>
@@ -105,7 +101,6 @@ layout: default
   </ol>
 </section>
 
-<!-- ============ STACK ============ -->
 <section id="stack" class="section">
   <div class="section__head">
     <span class="section__idx mono">03</span>
@@ -123,7 +118,6 @@ layout: default
   </div>
 </section>
 
-<!-- ============ EDUCATION ============ -->
 <section id="education" class="section">
   <div class="section__head">
     <span class="section__idx mono">04</span>
@@ -158,9 +152,8 @@ layout: default
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
 <section id="contact" class="section contact">
   <p class="contact__kicker mono">// let's build something fast</p>
-  <a class="contact__email" href="mailto:{{ r.email }}">{{ r.email }}</a>
+  {% include email.html email=r.email class="contact__email" %}
   <p class="contact__loc mono">{{ r.location }} · {{ r.citizenship }}</p>
 </section>

@@ -1,0 +1,15 @@
+{%- comment -%}
+  Bot-resistant email link. The address is never emitted as a contiguous
+  string or as a mailto: href in the static HTML — only split across data-u
+  / data-d attributes. assets/js/main.js reassembles the real link at runtime.
+
+  Params:
+    include.email  required — full address (e.g. user@example.com)
+    include.class  optional — extra CSS classes
+    include.label  optional — fixed visible text; if omitted, JS shows the
+                              address and the no-JS fallback shows "user [at] domain"
+{%- endcomment -%}
+{%- assign _parts = include.email | split: "@" -%}
+{%- assign _u = _parts[0] -%}
+{%- assign _d = _parts[1] -%}
+<a class="js-mail{% if include.class %} {{ include.class }}{% endif %}" data-u="{{ _u }}" data-d="{{ _d }}"{% if include.label %} data-label="{{ include.label }}"{% endif %} rel="nofollow">{% if include.label %}{{ include.label }}{% else %}{{ _u }}&#32;[at]&#32;{{ _d }}{% endif %}</a>
