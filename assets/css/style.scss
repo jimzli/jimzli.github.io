@@ -32,6 +32,7 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
+  position: relative; z-index: 0;   /* stacking context so #bg can sit behind content */
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -52,6 +53,12 @@ body {
 a { color: inherit; text-decoration: none; }
 
 ::selection { background: var(--amber); color: #1a1407; }
+
+/* ---------- animated background ---------- */
+#bg {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: -1; pointer-events: none;
+}
 
 /* ---------- grain overlay ---------- */
 .grain {
@@ -104,15 +111,6 @@ a { color: inherit; text-decoration: none; }
 /* When content is taller than the viewport, top-align so the name never clips */
 @media (max-height: 920px), (max-width: 900px) {
   .hero { align-items: flex-start; }
-}
-.hero__grid {
-  position: absolute; inset: 0; z-index: 0; opacity: 0.5;
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(120% 90% at 70% 0%, #000 30%, transparent 78%);
-          mask-image: radial-gradient(120% 90% at 70% 0%, #000 30%, transparent 78%);
 }
 .hero__inner { position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; width: 100%; }
 

@@ -150,7 +150,7 @@ skills:
   - group: JVM Toolchain
     items: [Spring, Maven, Gradle, JUnit, Mockito, AspectJ, Testcontainers]
   - group: Engineering Practices
-    items: [TDD, BDD, "CI/CD", "UTs / ITs", DDD, Scrum]
+    items: [TDD, BDD, "CI/CD", "UTs / ITs", DDD, Scrum, Leadership]
   - group: Domain Tools
     items: [Bloomberg, "Reuters DataStream", NetLogo, "LaTeX", Unix]
   - group: AI / Agentic
