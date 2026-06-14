@@ -146,7 +146,7 @@ skills:
   - group: Platform & Infra
     items: [Docker, Jenkins, TeamCity, AWS, "Alibaba Cloud", GitLab, Jira]
   - group: Low-Latency
-    items: [Aeron, Chronicle, SBE, ProtoBuf, Thrift, "FIX 4+"]
+    items: [Aeron, Chronicle, SBE, ProtoBuf, Thrift, "FIX 4+", gRPC, Disruptor]
   - group: JVM Toolchain
     items: [Spring, Maven, Gradle, JUnit, Mockito, AspectJ, Testcontainers]
   - group: Engineering Practices

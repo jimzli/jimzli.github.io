@@ -69,7 +69,7 @@ layout: default
     {% for job in r.experience %}
     <li class="row{% if job.current %} row--live{% endif %} reveal-up">
       <div class="row__period mono">
-        {% if job.current %}<span class="row__present">● {{ job.period }}</span>{% else %}{{ job.period }}{% endif %}
+        {% if job.current %}<span class="row__present"><span class="dot"></span>{{ job.period }}</span>{% else %}{{ job.period }}{% endif %}
       </div>
       <div class="row__body">
         <h3 class="row__company">
@@ -129,8 +129,14 @@ layout: default
       <div class="edu__period mono">{{ e.period }}</div>
       <div class="edu__body">
         <h3 class="edu__school">{% include extlink.html url=e.url text=e.school class="row__link" %}</h3>
+        {% if e.note != "" %}
+        <details class="row__disclosure">
+          <summary class="row__role edu__award">{{ e.award }}</summary>
+          <p class="row__detail edu__note">{{ e.note }}</p>
+        </details>
+        {% else %}
         <div class="edu__award">{{ e.award }}</div>
-        {% if e.note != "" %}<p class="edu__note">{{ e.note }}</p>{% endif %}
+        {% endif %}
       </div>
     </div>
     {% endfor %}
@@ -154,6 +160,6 @@ layout: default
 
 <section id="contact" class="section contact">
   <p class="contact__kicker mono">// let's build something awesome<span class="blink">_</span></p>
-  {% include email.html email=r.email class="contact__email" %}
+  {% include email.html email=r.email class="contact__btn" label="Say hello" %}
   <p class="contact__loc mono">{{ r.location }} · Remote</p>
 </section>

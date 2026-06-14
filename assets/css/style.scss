@@ -278,7 +278,12 @@ html[data-theme="light"] .topbar__theme .icon-moon { display: none; }
 .row:hover { background: linear-gradient(90deg, rgba(232,176,75,0.04), transparent 70%); }
 
 .row__period { font-size: 0.8rem; color: var(--ink-soft); padding-top: 0.3rem; }
-.row__present { color: var(--bull); letter-spacing: 0.04em; }
+.row__present {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-size: 0.74rem; color: var(--ink-soft);
+  border: 1px solid var(--line); border-radius: 100px;
+  padding: 0.35rem 0.8rem;
+}
 .row__company {
   font-family: var(--serif); font-weight: 500; font-size: 1.7rem;
   letter-spacing: -0.01em; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.7rem;
@@ -310,7 +315,7 @@ html[data-theme="light"] .topbar__theme .icon-moon { display: none; }
 .row__role:hover::after { color: var(--amber); }
 .row__disclosure[open] .row__role::after { content: "// less info"; }
 @media (max-width: 620px) {
-  .row__role::after { content: "// more"; }
+  .row__role::after { content: "// more"; white-space: nowrap; min-width: 3.6em; flex: 0 0 auto; }
   .row__disclosure[open] .row__role::after { content: "// less"; }
 }
 .row__detail { margin-top: 0.85rem; color: var(--ink-soft); max-width: 62ch; }
@@ -396,14 +401,14 @@ html[data-theme="light"] .topbar__theme .icon-moon { display: none; }
 /* ---------- contact ---------- */
 .contact { text-align: center; padding-top: clamp(4rem, 12vw, 8rem); }
 .contact__kicker { color: var(--amber); font-size: 0.85rem; margin-bottom: 1.2rem; }
-.contact__email {
-  font-family: var(--serif); font-style: italic; font-weight: 400;
-  font-size: clamp(1.8rem, 8vw, 4.5rem); letter-spacing: -0.02em;
-  background: linear-gradient(120deg, var(--ink), var(--amber));
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  transition: opacity .25s; display: inline-block;
+.contact__btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--sans); font-size: 1rem; font-weight: 500; cursor: pointer;
+  color: var(--bg); background: var(--amber); border: 1px solid var(--amber);
+  border-radius: 100px; padding: 0.85rem 1.8rem; letter-spacing: 0.01em;
+  transition: background .25s, color .25s;
 }
-.contact__email:hover { opacity: 0.75; }
+.contact__btn:hover { background: transparent; color: var(--amber); }
 .contact__loc { margin-top: 1.4rem; color: var(--ink-faint); font-size: 0.82rem; }
 
 /* ---------- footer ---------- */
