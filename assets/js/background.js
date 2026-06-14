@@ -14,8 +14,8 @@
   var PALETTES = {
     dark:  { line: "232,176,75", comp: "lighter",     node: "232,176,75",
              pulseA: "232,176,75", pulseB: "67,211,158", lineA: 0.07, coreA: 0.32 },
-    light: { line: "120,90,30",  comp: "source-over",  node: "120,90,30",
-             pulseA: "176,125,30", pulseB: "31,157,107", lineA: 0.1,  coreA: 0.3 }
+    light: { line: "96,150,250",  comp: "source-over",  node: "96,150,250",
+             pulseA: "96,150,250", pulseB: "31,157,107", lineA: 0.05,  coreA: 0.16 }
   };
 
   var pal, glowNode, glowA, glowB;

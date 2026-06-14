@@ -9,7 +9,7 @@
       var next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
       document.documentElement.dataset.theme = next;
       var meta = document.querySelector("meta[name=theme-color]");
-      if (meta) meta.content = next === "light" ? "#f6f4ec" : "#0b0c0e";
+      if (meta) meta.content = next === "light" ? "#f4f6fa" : "#0b0c0e";
       try { localStorage.setItem("theme", next); } catch (e) {}
       window.dispatchEvent(new CustomEvent("themechange", { detail: next }));
     });
