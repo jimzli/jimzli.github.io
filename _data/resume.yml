@@ -41,8 +41,9 @@ experience:
       and VIP users.
       Earlier, as Singapore lead for the <a class="row__link"
       href="https://www.okx.com/en-sg/institutional" target="_blank"
-      rel="noopener">OKX Institutional</a> backend, launched Nitro Spreads and
-      stood up the RFQ and Block Trading services from the ground up.
+      rel="noopener">OKX Institutional</a> backend, launched Nitro Spreads, an
+      atomic spreads orderbook for delta-neutral strategies, and supported RFQ
+      and Block Trading services.
 
   - company: BitMEX
     url: https://www.bitmex.com/
@@ -142,7 +143,7 @@ skills:
   - group: Languages
     items: [Java, Python, R, "JS / HTML / JSON", "C#", VBA, Prolog, "KDB+/q"]
   - group: Markets & Domain
-    items: ["Market Making", "Algorithmic Trading", "DMA", "RFQ & Block Trading", "Order Matching", "Risk & PnL", "Low-Latency Pricing"]
+    items: ["Market Making", "Algorithmic Trading", "DMA", "RFQ", "Block Trading", "Order Matching", "Risk & PnL", "Low-Latency Pricing"]
   - group: Platform & Infra
     items: [Docker, Jenkins, TeamCity, AWS, "Alibaba Cloud", GitLab, Jira]
   - group: Low-Latency

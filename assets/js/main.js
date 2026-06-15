@@ -2,18 +2,40 @@
 (function () {
   "use strict";
 
-  // Theme toggle (persisted; initial value set by the inline head script)
+  // Theme toggle: cycles auto -> light -> dark. "auto" follows the OS preference.
+  // (initial value set by the inline head script)
+  var ORDER = ["auto", "light", "dark"];
+  var darkMedia = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function applyTheme(pref) {
+    var theme = pref === "auto" ? (darkMedia.matches ? "dark" : "light") : pref;
+    var de = document.documentElement;
+    de.dataset.theme = theme;
+    de.dataset.themePref = pref;
+    var meta = document.querySelector("meta[name=theme-color]");
+    if (meta) meta.content = theme === "light" ? "#f4f6fa" : "#0b0c0e";
+    var btn = document.querySelector(".topbar__theme");
+    if (btn) {
+      var label = "Theme: " + pref;
+      btn.setAttribute("aria-label", label);
+      btn.setAttribute("title", label);
+    }
+    try { localStorage.setItem("theme", pref); } catch (e) {}
+    window.dispatchEvent(new CustomEvent("themechange", { detail: theme }));
+  }
+
   var themeBtn = document.querySelector(".topbar__theme");
   if (themeBtn) {
     themeBtn.addEventListener("click", function () {
-      var next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
-      document.documentElement.dataset.theme = next;
-      var meta = document.querySelector("meta[name=theme-color]");
-      if (meta) meta.content = next === "light" ? "#f4f6fa" : "#0b0c0e";
-      try { localStorage.setItem("theme", next); } catch (e) {}
-      window.dispatchEvent(new CustomEvent("themechange", { detail: next }));
+      var cur = document.documentElement.dataset.themePref || "auto";
+      applyTheme(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
     });
   }
+
+  // Live-follow the OS preference while in auto mode
+  darkMedia.addEventListener("change", function () {
+    if ((document.documentElement.dataset.themePref || "auto") === "auto") applyTheme("auto");
+  });
 
   // Reassemble email links at runtime so the address is never in static HTML
   document.querySelectorAll(".js-mail").forEach(function (a) {
