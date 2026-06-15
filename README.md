@@ -4,7 +4,7 @@
 </div>
 
 A fast, single-page personal site built with Jekyll. All content is data-driven
-from one file, and the HTML and CSS are minified at build time.
+from one file, and the HTML, CSS, and JS are minified at build time.
 
 ## Develop
 
@@ -22,6 +22,7 @@ Then open http://127.0.0.1:4000.
 | `_data/resume.yml` | All content; the single source of truth |
 | `_layouts/default.html` | Page shell (head, nav, footer) |
 | `_layouts/compress.html` | HTML minifier applied at build |
+| `_plugins/minify_js.rb` | Minifies JS in production builds (Terser) |
 | `_includes/` | Reusable snippets: `email.html`, `extlink.html` |
 | `assets/css/style.scss` | Styling, compiled and minified by Jekyll Sass |
 | `assets/js/main.js` | Scroll reveal, sticky nav, email assembly, link confirm |
