@@ -38,11 +38,26 @@
   });
 
   // Reassemble email links at runtime so the address is never in static HTML
+  function sanitizeEmailLocalPart(value) {
+    if (!value) return "";
+    var cleaned = value.trim().replace(/[^A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]/g, "");
+    return cleaned;
+  }
+
+  function sanitizeEmailDomainPart(value) {
+    if (!value) return "";
+    var cleaned = value.trim().toLowerCase().replace(/[^a-z0-9.-]/g, "");
+    if (!/^[a-z0-9.-]+\.[a-z]{2,}$/.test(cleaned)) return "";
+    return cleaned;
+  }
+
   document.querySelectorAll(".js-mail").forEach(function (a) {
     var u = a.getAttribute("data-u");
     var d = a.getAttribute("data-d");
-    if (!u || !d) return;
-    var addr = u + "@" + d;
+    var safeU = sanitizeEmailLocalPart(u);
+    var safeD = sanitizeEmailDomainPart(d);
+    if (!safeU || !safeD) return;
+    var addr = safeU + "@" + safeD;
     a.setAttribute("href", "mailto:" + addr);
     if (!a.hasAttribute("data-label")) a.textContent = addr;
   });
